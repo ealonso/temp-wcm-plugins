@@ -19,6 +19,7 @@ Import-Package:\
 	com.liferay.portal.kernel.exception,\
 	com.liferay.portal.kernel.language,\
 	com.liferay.portal.kernel.lar,\
+	com.liferay.portal.kernel.portlet,\
 	com.liferay.portal.kernel.servlet,\
 	com.liferay.portal.kernel.servlet.filters.invoker,\
 	com.liferay.portal.security.auth,\

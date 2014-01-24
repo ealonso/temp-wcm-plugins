@@ -45,6 +45,10 @@
 			<value>o/content-targeting-portlet/1</value>
 		</init-param>
 		<init-param>
+			<name>config-template</name>
+			<value>/html/targeted_content_display/configuration.ftl</value>
+		</init-param>
+		<init-param>
 			<name>view-template</name>
 			<value>html/targeted_content_display/view.ftl</value>
 		</init-param>
