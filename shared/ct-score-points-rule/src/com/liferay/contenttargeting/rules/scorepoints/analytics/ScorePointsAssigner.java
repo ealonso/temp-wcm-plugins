@@ -14,7 +14,7 @@
 
 package com.liferay.contenttargeting.rules.scorepoints.analytics;
 
-import com.liferay.contenttargeting.service.ScorePointLocalServiceUtil;
+import com.liferay.contenttargeting.rules.scorepoints.service.ScorePointLocalServiceUtil;
 import com.liferay.contenttargeting.util.ContentTargetingUtil;
 import com.liferay.contenttargeting.util.UserSegmentUtil;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
