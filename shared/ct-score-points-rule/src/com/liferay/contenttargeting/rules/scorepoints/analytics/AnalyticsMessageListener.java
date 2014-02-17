@@ -24,6 +24,10 @@ import com.liferay.portal.kernel.messaging.MessageListener;
  */
 public class AnalyticsMessageListener implements MessageListener {
 
+	public AnalyticsMessageListener() {
+		System.out.println("HOLA");
+	}
+
 	@Override
 	public void receive(Message message) {
 		try {
