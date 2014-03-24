@@ -238,59 +238,6 @@ public class ContentTargetingPortlet extends CTFreeMarkerPortlet {
 		}
 	}
 
-	public void updateRuleInstance(
-			ActionRequest request, ActionResponse response)
-		throws Exception {
-
-		long ruleInstanceId = ParamUtil.getLong(request, "ruleInstanceId");
-
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(
-			RuleInstance.class.getName(), request);
-
-		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
-			WebKeys.THEME_DISPLAY);
-
-		String ruleKey = ParamUtil.getString(request, "ruleKey");
-
-		Rule rule = _rulesRegistry.getRule(ruleKey);
-
-		String typeSettings = rule.processRule(request, response);
-
-		long userSegmentId = ParamUtil.getLong(request, "userSegmentId");
-
-		try {
-			if (ruleInstanceId > 0) {
-				_ruleInstanceService.updateRuleInstance(
-						ruleInstanceId, typeSettings, serviceContext);
-			}
-			else {
-				_ruleInstanceService.addRuleInstance(
-						themeDisplay.getUserId(), ruleKey, userSegmentId,
-						typeSettings, serviceContext);
-			}
-
-			String portletId = PortalUtil.getPortletId(request);
-
-			SessionMessages.add(
-				request, portletId + SessionMessages.KEY_SUFFIX_REFRESH_PORTLET,
-				portletId);
-
-			sendRedirect(request, response);
-		}
-		catch (Exception e) {
-			SessionErrors.add(request, e.getClass().getName());
-
-			if (e instanceof PrincipalException) {
-				response.setRenderParameter(
-					"mvcPath", ContentTargetingPath.EDIT_USER_SEGMENT);
-			}
-			else {
-				response.setRenderParameter(
-					"mvcPath", ContentTargetingPath.ERROR);
-			}
-		}
-	}
-
 	public void updateUserSegment(
 			ActionRequest request, ActionResponse response)
 		throws Exception {
@@ -553,16 +500,15 @@ public class ContentTargetingPortlet extends CTFreeMarkerPortlet {
 			Map<String, Object> clonedContext = _cloneTemplateContext(template);
 
 			for (Rule rule : rules.values()) {
-				if (!rule.getEditorType().equals("time")) {
-					String ruleTemplate = rule.getFormHTML(
-					null, clonedContext);
+				String ruleTemplate = rule.getFormHTML(null, clonedContext);
 
-					ruleTemplate = StringUtil.replace(
-						ruleTemplate, new String[] {StringPool.RETURN_NEW_LINE, StringPool.NEW_LINE},
-						new String[] {StringPool.BLANK, StringPool.BLANK});
+				ruleTemplate = StringUtil.replace(
+					ruleTemplate,
+					new String[]
+						{StringPool.RETURN_NEW_LINE, StringPool.NEW_LINE},
+					new String[] {StringPool.BLANK, StringPool.BLANK});
 
-					ruleTemplates.put(rule.getRuleKey(), ruleTemplate);
-				}
+				ruleTemplates.put(rule.getRuleKey(), ruleTemplate);
 			}
 
 			template.put("ruleTemplates", ruleTemplates);

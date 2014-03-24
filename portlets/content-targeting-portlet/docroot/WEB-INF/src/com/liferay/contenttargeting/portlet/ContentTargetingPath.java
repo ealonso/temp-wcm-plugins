@@ -33,9 +33,6 @@ public class ContentTargetingPath {
 
 	public static final String ERROR = "html/error.ftl";
 
-	public static final String MANAGE_RULES =
-		"html/content_targeting/manage_rules.ftl";
-
 	public static final String VIEW = "html/content_targeting/view.ftl";
 
 	public static final String VIEW_CAMPAIGNS_RESOURCES =
