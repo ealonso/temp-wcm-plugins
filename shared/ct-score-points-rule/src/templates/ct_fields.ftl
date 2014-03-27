@@ -1,7 +1,7 @@
 <#assign aui = PortletJspTagLibs["/META-INF/aui.tld"] />
 <#assign liferay_ui = PortletJspTagLibs["/META-INF/liferay-ui.tld"] />
 
-<#if userSegmentName>
+<#if userSegmentName??>
 	<div class="alert alert-info">
 		<@liferay_ui["message"] arguments=userSegmentName key="users-will-receive-1-point-for-this-user-segment-every-time-they-visit-a-page-or-content-categorized-under-x" />
 	</div>
