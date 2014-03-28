@@ -22,12 +22,6 @@ public class ContentTargetingPath {
 	public static final String EDIT_CAMPAIGN =
 		"html/content_targeting/edit_campaign.ftl";
 
-	public static final String EDIT_RULE_INSTANCE =
-		"html/content_targeting/edit_rule_instance.ftl";
-
-	public static final String EDIT_RULE_INSTANCE_REDIRECT =
-		"html/content_targeting/edit_rule_instance_redirect.ftl";
-
 	public static final String EDIT_USER_SEGMENT =
 		"html/content_targeting/edit_user_segment.ftl";
 
